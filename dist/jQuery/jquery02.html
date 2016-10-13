@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02</title>
+    <!--Baidu CDN-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <!--案例7-->
+    <script>
+        $(document).ready(function(){
+            $("input").focus(function(){
+                $(this).css("background-color","#cccccc");
+            });
+            $("input").blur(function(){
+                $(this).css("background-color","#ffffff");
+            });
+
+            $(".ex .hide").click(function(){
+                $(this).parents(".ex").hide("slow");
+            });
+
+            $("button").click(function(){
+                $("p.h").toggle(1000);
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        div.ex
+        {
+            background-color:#e5eecc;
+            padding:7px;
+            border:solid 1px #c3c3c3;
+        }
+    </style>
+</head>
+<body>
+Name: <input type="text" name="fullname"><br>
+Email: <input type="text" name="email">
+
+<hr>
+<h3>mrscorpion</h3>
+<div class="ex">
+    <button class="hide">点我隐藏</button>
+    <p>博客: mrscorpion<br>
+        地址：http://mrscorpion.github.io</p>
+</div>
+
+<hr>
+<button>隐藏/显示</button>
+<p class="h">借人看人</p>
+<p class="h">后知后觉</p>
+</body>
+</html>

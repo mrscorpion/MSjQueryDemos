@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jquery</title>
+    <!--Baidu CDN-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+    <!--示例1-->
+//    <!--$(document).ready(function(){});  <==>  $(function(){});    文档就绪事件,2种写法效果相同-->
+
+        $(document).ready(function(){
+            $("p.tap").click(function(){
+//                隐藏当前元素
+                $(this).hide();
+            });
+        });
+
+//    鼠标左键双击 dblclick() ：当双击元素时，会发生 dblclick 事件
+    $(document).ready(function(){
+        $("p.double").dblclick(function(){
+            $(this).hide();
+        });
+    });
+
+
+    <!--示例2-->
+    $(function(){
+        // 开始写 jQuery 代码...
+        $("button").click(function(){
+//                隐藏所有 <u> 元素
+            $("u").hide();
+//                隐藏所有 class="test" 的 <p> 元素
+            $("p.test").hide()
+//                隐藏所有 id="test" 的元素
+            $("#test").hide()
+//                  隐藏第一个 <ul> 元素的第一个 <li> 元素
+            $("ul li:first").hide();
+//                  隐藏带有 href 属性的元素
+            $("[href]").hide();
+        });
+        $("#show").click(function(){
+            $("p.test").show();
+        });
+    });
+
+    <!--示例3-->
+    $(document).ready(function(){
+        $("button.all").click(function(){
+//            $("*")	选取所有元素
+            $("*").hide();
+        });
+    });
+
+    <!--示例4-->
+    $(document).ready(function(){
+//        选取奇数位置的 <tr> 元素
+        $("tr:odd").css("background-color","yellow");
+    });
+    </script>
+
+    <!--示例5-->
+    <!-- jQuery 函数封装： 通过 src 属性来引用文件，便于复用与维护-->
+    <!-- 这里执行设置偶数位置都<tr> 元素 背景颜色为橙色-->
+    <script src="../js/my_jquery_functions.js"></script>
+
+    <!--示例6-->
+    <script>
+        $(document).ready(function(){
+            $("#p1").mouseenter(function(){
+                alert("您误入我的领空，请迅速撤离!");
+            });
+            $("#p1").mouseleave(function(){
+                alert("既然飞离了，就放你一马");
+            });
+
+            $("#p2").mousedown(function(){
+                alert("我靠，你还真点！");
+            });
+        });
+    </script>
+</head>
+<body>
+<!--
+前言：本篇主要涉及jQuery选择器和事件
+-->
+
+
+<h2 class="tap">我是标题</h2>
+<p class="tap">如果你点我，我就会消失。</p>
+<p class="tap">继续点我!</p>
+<p class="double">连续点2下，我才肯消失</p>
+
+<hr>
+<u>点击button，我才消失</u>
+<p class="test">点击"点我"，我才消失1，点击显示，我就显示</p>
+<p id="test">点击button，我才消失2</p>
+<p class="tap">我偏不消失，除非你点我</p>
+<ul>
+    <li>Coffee</li>
+    <li>Milk</li>
+    <li>Tea</li>
+</ul>
+<a href="http://mrscorpion.github.io">mrscorpion</a><br><br>
+<button>点我</button>
+<button id="show">显示</button>
+
+<hr>
+<button class="all">只要你点我，全部都消失</button>
+</body>
+
+<hr>
+<h1>导航</h1>
+
+<table border="1">
+    <tr>
+        <th>分类名</th>
+        <th>链接</th>
+    </tr>
+    <tr>
+        <td>首页</td>
+        <td>http://mrscorpion.github.io</td>
+    </tr>
+    <tr>
+        <td>分类</td>
+        <td>http://mrscorpion.github.io/categories/</td>
+    </tr>
+    <tr>
+        <td>归档</td>
+        <td>http://mrscorpion.github.io/archives/</td>
+    </tr>
+    <tr>
+        <td>标签</td>
+        <td>http://mrscorpion.github.io/tags/</td>
+    </tr>
+    <tr>
+        <td>关于</td>
+        <td>http://mrscorpion.github.io/about/</td>
+    </tr>
+</table>
+
+<hr>
+<p id="p1">一旦进入我的领空，我就会发出警告</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p id="p2">试试再我头上点击鼠标，进行投弹</p>
+</html>
