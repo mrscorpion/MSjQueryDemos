@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 获取并设置CSS类 、 css()方法</title>
+    <!--Baidu CDN-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button.btn1").click(function(){
+                $("h1,h2,p,#div2").addClass("blue");
+                $("#div1").addClass("important");
+            });
+            $("button.btn2").click(function(){
+                $("h1,h2,p,#div2").removeClass("blue");
+            });
+
+            $("button.btn3").click(function(){
+                $("#div1").toggleClass("blue");
+            });
+
+//            获取 CSS 属性
+            $("button.btn4").click(function(){
+                alert("背景颜色 = " + $("p.bg").css("background-color"));
+            });
+//            设置 CSS 属性
+            $("button.btn5").click(function(){
+//                设置单个属性
+                $("p.bg").css("background-color","yellow");
+//                设置多个属性
+                $("p.bg1").css({"background-color":"yellow","font-size":"200%"});
+            });
+        });
+    </script>
+
+    <!--实例样式表-->
+    <style type="text/css">
+        .important
+        {
+            font-weight:bold;
+            font-size:xx-large;
+        }
+        .blue
+        {
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+<!-- jQuery 操作 CSS
+jQuery 拥有若干进行 CSS 操作的方法。我们将学习下面这些：
+addClass() - 向被选元素添加一个或多个类
+removeClass() - 从被选元素删除一个或多个类
+toggleClass() - 对被选元素进行添加/删除类的切换操作
+css() - 设置或返回样式属性
+-->
+<h1>标题 1</h1>
+<h2>标题 2</h2>
+<p>这是一个段落。</p>
+<p>这是另外一个段落。</p>
+<div id="div1">这是重要的文本1!</div>
+<div id="div2">这是不重要的文本2!</div>
+<br>
+<button class="btn1">为元素添加 class</button>
+<button class="btn2">为元素删除 class</button>
+<button class="btn3">切换 class</button>
+
+<p class="bg" style="background-color:#0000ff">获取背景颜色</p>
+<p class="bg1" style="background-color:#98bf21">设置样式</p>
+<button class="btn4">返回 p 元素的 background-color </button>
+<button class="btn5">设置 多个样式 </button>
+</body>
+</html>

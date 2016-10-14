@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尺寸</title>
+    <!--Baidu CDN-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                var txt="";
+                txt+="Width of div: " + $("#div1").width() + "</br>";
+                txt+="div 高度: " + $("#div1").height() + "</br>";
+                txt+="div 宽度，包含内边距: " + $("#div1").innerWidth() + "</br>";
+                txt+="div 高度，包含内边距: " + $("#div1").innerHeight() + "</br>";
+                txt+="div 宽度，包含内边距和边框: " + $("#div1").outerWidth() + "</br>";
+                txt+="div 高度，包含内边距和边框: " + $("#div1").outerHeight();
+                $("#div1").html(txt);
+            });
+        });
+    </script>
+</head>
+<body>
+<!--
+margin 外边距 、 padding 内边距 、 尺寸（margin、border、padding、element(width\height)）
+width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。
+height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。
+下面的例子返回指定的 <div> 元素的宽度和高度
+-->
+<div id="div1" style="height:100px;width:300px;padding:10px;margin:3px;border:1px solid blue;background-color:lightblue;"></div>
+<br>
+<button>显示 div 元素的尺寸</button>
+<p>width() - 返回元素的宽度</p>
+<p>height() - 返回元素的高度</p>
+<p>innerWidth() - 返回元素的宽度 (包含内边距)。</p>
+<p>innerHeight() - 返回元素的高度 (包含内边距)。</p>
+<p>outerWidth() - 返回元素的宽度 (包含内边距和边框)。</p>
+<p>outerHeight() - 返回元素的高度 (包含内边距和边框)。</p>
+</body>
+</html>

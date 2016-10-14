@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历</title>
+    <style>
+        /*父代*/
+        .ancestors *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+
+        /*子代*/
+        .descendants *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+
+        /*同胞*/
+        .siblings *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+
+    <!--Baidu CDN-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+//            遍历祖先
+//            所有父元素
+            $("span.parent").parents().css({"color":"yellow","border":"2px solid yellow"});
+//            直接父元素
+            $("span.parent").parent().css({"color":"red","border":"2px solid red"});
+//            指定到父元素 div
+            $("span.parent2").parents("div").css({"color":"red","border":"2px solid red"});
+//            ul之前的父元素
+            $("span.parent2").parentsUntil("ul").css({"color":"yellow","border":"2px solid yellow"});
+
+//            遍历子孙
+            $("div").children().css({"color":"red","border":"2px solid red"});
+            $("div").children("p.pp1").css({"color":"red","border":"2px solid green"});
+            $("div").find("span.pp1").css({"color":"red","border":"2px solid orange"});
+//            返回 <div> 的所有后代
+            $("#div2").find("*").css({"color":"red","border":"2px solid red"});
+
+//            遍历同胞
+            $("h2").siblings().css({"color":"blue","border":"2px solid gray"});
+//            使用可选参数来过滤对同胞元素的搜索
+            $("h2").siblings("p").css({"color":"black","border":"2px solid purple"});
+//            nextAll() 方法返回被选元素的所有跟随的同胞元素
+            $("h2").nextAll().css({"color":"green","border":"2px solid green"});
+//            next() 方法返回被选元素的下一个同胞元素
+            $("h2").next().css("font-size","200%");
+//            nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素
+            $("h2").nextUntil("h6").css({opacity:'0.5'})
+        });
+    </script>
+</head>
+<body class="ancestors">body (曾曾祖父元素1 great-great-grandparent)
+<!--遍历 - 祖先
+向上遍历 DOM 树：parent()  parents()  parentsUntil()
+parent() 方法返回被选元素的直接父元素，该方法只会向上一级对 DOM 树进行遍历。
+parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)。
+parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。
+
+在 DOM 树中水平遍历
+有许多有用的方法让我们在 DOM 树进行水平遍历：siblings() next() nextAll() nextUntil() prev() prevAll() prevUntil()
+prev(), prevAll() 以及 prevUntil() 方法的工作方式与next() nextAll() nextUntil()方法类似
+-->
+<div style="width:500px;">div (曾祖父元素1 great-grandparent)
+        <ul>ul (祖父元素1 grandparent)
+            <li>li (父元素1 direct parent)
+                <span class="parent">span</span>
+            </li>
+        </ul>
+</div>
+
+    <div style="width:500px;">div (曾祖父元素2)
+        <ul>ul (祖父元素2)
+            <li>li (父元素2)
+                <span class="parent2">span2</span>
+            </li>
+        </ul>
+    </div>
+
+<!--
+向下遍历 DOM 树 的2个 jQuery 方法：children()   find()
+children() 方法返回被选元素的所有直接子元素，该方法只会向下一级对 DOM 树进行遍历。
+find() 方法返回被选元素的后代元素，一路向下直到最后一个后代
+-->
+<div class="descendants" style="width:500px;">div (当前元素)
+    <p>p (儿子元素)
+        <span>span (孙子元素)</span>
+    </p>
+    <p class="pp1">p (儿子元素)
+        <span class="pp1">span (孙子元素)</span>
+    </p>
+    <p class="2">p (儿子元素)
+        <u class="2">u (孙子元素)</u>
+    </p>
+</div>
+<div class="descendants" id="div2" style="width:500px;">div (当前元素)
+    <p>p (儿子元素)
+        <span>span (孙子元素)</span>
+    </p>
+    <p class="1">p (儿子元素)
+        <span class="1">span (孙子元素)</span>
+    </p>
+</div>
+
+<hr>
+<div class="siblings">div (父元素)
+    <p>p</p>
+    <span>span</span>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+    <p>p</p>
+    <p>p2</p>
+    <p>p3</p>
+</div>
+</body>
+</html>
