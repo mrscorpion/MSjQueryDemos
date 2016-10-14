@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom操作</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                alert("Text: " + $("#test").text());
+            });
+            $("#btn2").click(function(){
+                alert("HTML: " + $("#test").html());
+            });
+//            val() 方法获得输入字段的值
+            $("#btn3").click(function(){
+                alert("值为: " + $("#input").val());
+            });
+//            attr() 方法用于获取属性值
+            $("#btn4").click(function () {
+                alert($("#mr").attr("href"))
+            });
+        });
+    </script>
+</head>
+<body>
+<!--
+DOM = Document Object Model（文档对象模型）
+DOM 定义访问 HTML 和 XML 文档的标准：
+"W3C 文档对象模型独立于平台和语言的界面，允许程序和脚本动态访问和更新文档的内容、结构以及样式。"
+
+获得内容 - text()、html() 以及 val()
+三个简单实用的用于 DOM 操作的 jQuery 方法：
+text() - 设置或返回所选元素的文本内容
+html() - 设置或返回所选元素的内容（包括 HTML 标记）
+val() - 设置或返回表单字段的值
+-->
+
+<p id="test">这是段落中的 <b>粗体</b> 文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+<button id="btn3">显示值</button>
+<p>名称: <input type="text" id="input" value="hello"></p><br>
+<p><a href="http://mrscorpion.github.io" id="mr">mr.scorpion</a></p>
+<button id="btn4">显示 href 属性的值</button>
+</body>
+</html>

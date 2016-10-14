@@ -3,21 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>动画</title>
-    <!--<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>-->
     <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            $("button").click(function(){
-                $("div").animate({left:'250px'});
+            $("button.nor").click(function(){
+                $("div.nor").animate({
+                    left:'250px',
+                    opacity:'0.5',
+//                    预设定值
+                    height:'toggle',
+//                    使用相对值
+                    width:'+=150px'
+                });
+            });
+
+            $("button.que").click(function(){
+                var div=$("div.que");
+                div.animate({height:'300px',opacity:'0.4'},"slow");
+                div.animate({width:'300px',opacity:'0.8'},"slow");
+                div.animate({height:'100px',opacity:'0.4'},"slow");
+                div.animate({width:'100px',opacity:'0.8'},"slow");
+            });
+
+            $("button.font").click(function(){
+                var div=$("div.font");
+                div.animate({left:'100px'},"slow");
+                div.animate({fontSize:'3em'},"slow");
+            });
+
+            $("#flip").click(function(){
+                $("#panel").slideDown(3000);
+            });
+            $("#stop").click(function(){
+                $("#panel").stop();
+            });
+
+//            Callback 隐藏效果完全实现后回调函数
+            $("button.hide").click(function(){
+                $("p.p").hide("slow",function(){
+                    alert("段落现在被隐藏了，完成后弹框");
+                });
+            });
+//            没有 callback(回调)
+            $("button.show").click(function(){
+                $("p.p").show("1000");
+                alert("段落即将出现，提前弹窗");
+            });
+
+//          方法链接
+            $("button.chaining").click(function(){
+                $("#p1").css("color","red").slideUp(2000).slideDown(2000);
             });
         });
     </script>
+
+    <style type="text/css">
+        #panel,#flip
+        {
+            padding:5px;
+            text-align:center;
+            background-color:#e5eecc;
+            border:solid 1px #c3c3c3;
+        }
+        #panel
+        {
+            padding:50px;
+            display:none;
+        }
+    </style>
 </head>
 <body>
-<button>开始动画</button>
-<p>默认情况下，所有的 HTML 元素有一个静态的位置，且是不可移动的。
-    如果需要改变为，我们需要将元素的 position 属性设置为 relative, fixed, 或 absolute!</p>
-<div style="background:#98bf21;height:100px;width:100px;position:absolute;">
+<!--
+前言：可以用 animate() 方法来操作所有 CSS 属性吗？
+是的，几乎可以！不过，需要记住一件重要的事情：当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left，使用 marginRight 而不是 margin-right，等等。
+同时，色彩动画并不包含在核心 jQuery 库中。
+如果需要生成颜色动画，您需要从 jquery.com 下载 Color Animations 插件。
+-->
+<button class="hide">隐藏段落</button>
+<button class="show">显示段落</button>
+<p class="p">默认情况下，所有的 HTML 元素有一个静态的位置，且是不可移动的。
+    如果需要改变为，我们需要将元素的 position 属性设置为 relative, fixed, 或 absolute!</p><br>
+<button class="nor">开始动画</button>
+<button class="que">使用队列进行动画</button>
+<button class="font">改编字号</button>
+<div class="nor" style="background:#98bf21;height:100px;width:100px;position:absolute;">
+</div>
+<div class="que" style="background:#b3d4fc;height:100px;width:100px;position:absolute;">
+</div>
+<div class="font" style="background:#ffff00;height:100px;width:200px;position:fixed;">HELLO</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<button id="stop">停止滑动</button>
+<div id="flip">点我向下滑动面板</div>
+<div id="panel">Hello world!</div>
+
+<br><br><br><br><br><br><br><br><br>
+<p id="p1">hello world!!</p>
+<button class="chaining">方法链接</button>
 </div>
 </body>
 </html>
