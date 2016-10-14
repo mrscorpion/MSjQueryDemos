@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function callbackFunction(result, methodName)
+        {
+            var html = '<ul>';
+            for(var i = 0; i < result.length; i++)
+            {
+                html += '<li>' + result[i] + '</li>';
+            }
+            html += '</ul>';
+            document.getElementById('divCustomers').innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+<!--  问题  jsonp 没弄懂 -->
+<!--JSONP 教程
+本章节我们将向大家介绍 JSONP 的知识。
+Jsonp(JSON with Padding) 是 json 的一种"使用模式"，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。
+为什么我们从不同的域（网站）访问数据需要一个特殊的技术(JSONP )呢？这是因为同源策略。
+同源策略，它是由Netscape提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略
+-->
+<div id="divCustomers">haha</div>
+<script>
+    $.getJSON("jsonp.php?jsoncallback=?", function(data) {
+
+        var html = '<ul>';
+        for(var i = 0; i < data.length; i++)
+        {
+            html += '<li>' + data[i] + '</li>';
+        }
+        html += '</ul>';
+
+        $('#divCustomers').html(html);
+    });
+</script>
+</body>
+</html>

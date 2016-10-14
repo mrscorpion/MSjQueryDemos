@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+//            first() 方法返回被选元素的首个元素
+            $("div p").first().css("background-color","yellow");
+//            last() 方法返回被选元素的最后一个元素
+            $("div p").last().css("background-color","blue");
+//            eq() 方法返回被选元素中带有指定索引号的元素, 索引号从 0 开始
+            $("p").eq(3).css("background-color","red");
+
+//            not() 方法与 filter() 相反
+            $("u").filter(".url").css("background-color","green");
+            $("u").not(".url").css("background-color","orange");
+        });
+    </script>
+</head>
+<body>
+<h1>欢迎访问我的主页</h1>
+<div>
+    <p>这是 div 中的一个段落。</p>
+</div>
+
+<div>
+    <p>这是另外一个 div 中的一个段落。</p>
+</div>
+
+<p>hello</p>
+<p>world</p>
+
+<u>haha</u><br><br>
+<u class="url">http://mrscorpion.github.io</u><br><br>
+<u>http://mrscorpion.github.io</u>
+</body>
+</html>

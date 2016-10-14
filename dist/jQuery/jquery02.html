@@ -8,9 +8,11 @@
     <!--案例7-->
     <script>
         $(document).ready(function(){
+//            focus() 当元素获得焦点时，发生 focus 事件
             $("input").focus(function(){
                 $(this).css("background-color","#cccccc");
             });
+//            blur() 当元素失去焦点时，发生 blur 事件
             $("input").blur(function(){
                 $(this).css("background-color","#ffffff");
             });
